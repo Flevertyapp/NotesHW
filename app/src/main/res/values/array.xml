@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="names">
+        <item>Заметка 1</item>
+        <item>Заметка 2</item>
+        <item>Погладь кота!</item>
+    </string-array>
+    <string-array name="description">
+        <item>Содержание заметки </item>
+        <item>Содержание заметки 2</item>
+        <item>Содержание заметки 3</item>
+    </string-array>
+    <string-array name="dates">
+        <item>01/01/2011</item>
+        <item>01/01/2022</item>
+        <item>01/01/2033</item>
+    </string-array>
+</resources>
