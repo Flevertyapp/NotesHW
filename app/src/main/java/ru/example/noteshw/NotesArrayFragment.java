@@ -1,17 +1,24 @@
 package ru.example.noteshw;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,7 +44,6 @@ public class NotesArrayFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
         }
     }*/
 
@@ -58,13 +64,44 @@ public class NotesArrayFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_notes_array, container, false);
+
     }
 
     @Override   //здесь инициализируется список через initList
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initList(view);
+        //initPopupMenu(view); //инициализация popup menu //падаем(((
     }
+
+    private void initPopupMenu(View view) { //создание  popup menu
+        TextView text = view.findViewById(R.id.name_view); //падаем, здесь, надо как-то динамически вытягивать ID
+        text.setOnClickListener(v -> {
+            Activity activity = requireActivity();
+            PopupMenu popupMenu = new PopupMenu(activity, v); //если импортировать не androidX, то ругается
+            activity.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu()); //надуваем
+            popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() { //вешаем листенер
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    int id = item.getItemId();
+                    switch (id) {
+                        case R.id.action_delete:
+                            Toast.makeText(getContext(), "Delete button pressed", Toast.LENGTH_SHORT).show();
+                            return true;
+                        case R.id.action_settings:
+                            Toast.makeText(getContext(), "Settings button pressed", Toast.LENGTH_SHORT).show();
+                            return true;
+                        case R.id.action_backup:
+                            Toast.makeText(getContext(), "Backup button pressed", Toast.LENGTH_SHORT).show();
+                            return true;
+                    }
+                    return true;
+                }
+            });
+            popupMenu.show();
+        });
+    }
+
 
     private void initList(View view) {          //создаем список заметок
         LinearLayout layoutView = (LinearLayout) view;  //создание текствью
@@ -121,3 +158,4 @@ public class NotesArrayFragment extends Fragment {
     }
 
 }
+

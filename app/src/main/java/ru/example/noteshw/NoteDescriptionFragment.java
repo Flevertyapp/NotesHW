@@ -16,7 +16,6 @@ public class NoteDescriptionFragment extends Fragment {
 
     static final String ARG_INDEX = "index";  //key
     private int index;                        //value
-    Note note;
 
     public NoteDescriptionFragment() {
         // Required empty public constructor
@@ -50,8 +49,8 @@ public class NoteDescriptionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Resources res = getResources();  //а так корректно вытаскивать данные из массива?
         TextView tvName = view.findViewById(R.id.name_view);
-        String stringName = res.getStringArray(R.array.names)[index];
-        tvName.setText(stringName);  //не показывает
+        //String stringName = res.getStringArray(R.array.names)[index];
+        tvName.setText(getResources().getStringArray(R.array.names)[index]);  //не показывает
         TextView tvDescription = view.findViewById(R.id.description_view);
         String stringDescription = res.getStringArray(R.array.description)[index];
         tvDescription.setText(stringDescription);
