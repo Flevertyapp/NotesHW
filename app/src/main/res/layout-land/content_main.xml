@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!-- это макет для альбомной ориентации -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/content_main">
+
+    <!-- список заметок -->
+    <fragment
+        android:id="@+id/notes_arr_view"
+        android:name="ru.example.noteshw.NotesArrayFragment"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <!-- содержание заметки -->
+    <FrameLayout
+        android:id="@+id/note_descr_view"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="?android:attr/detailsElementBackground" />
+
+</LinearLayout>

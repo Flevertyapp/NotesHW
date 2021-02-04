@@ -31,11 +31,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) { //
         int id = item.getItemId();
-        switch (id){
-            case R.id.action_add:Toast.makeText(MainActivity.this, "Add button pressed", Toast.LENGTH_SHORT).show();
-            case R.id.action_view:Toast.makeText(MainActivity.this, "View button pressed", Toast.LENGTH_SHORT).show();
-            case R.id.action_backup :Toast.makeText(MainActivity.this, "Backup button pressed", Toast.LENGTH_SHORT).show();
-            case R.id.action_settings :Toast.makeText(MainActivity.this, "Settings button pressed", Toast.LENGTH_SHORT).show();
+        switch (id) {
+            case R.id.action_add:
+                Toast.makeText(MainActivity.this, "Add button pressed", Toast.LENGTH_SHORT).show();
+            case R.id.action_view:
+                Toast.makeText(MainActivity.this, "View button pressed", Toast.LENGTH_SHORT).show();
+            case R.id.action_backup:
+                Toast.makeText(MainActivity.this, "Backup button pressed", Toast.LENGTH_SHORT).show();
+            case R.id.action_settings:
+                Toast.makeText(MainActivity.this, "Settings button pressed", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {  // реагирует на нажатие каждой буквы или символа
                 Toast.makeText(MainActivity.this, newText, Toast.LENGTH_SHORT).show(); //тост для себя
