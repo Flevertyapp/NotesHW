@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- это макет для альбомной ориентации -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <!--создаем свой экшн бар-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.NotesHW.AppBarOverlay">
 
-    <!-- список заметок -->
-    <fragment android:name="ru.example.noteshw.NotesArrayFragment"
-        android:id="@+id/notes_arr_view"
-        android:layout_weight="1"
-        android:layout_width="0px"
-        android:layout_height="match_parent" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.NotesHW.PopupOverlay" />
 
-    <!-- содержание заметки -->
-    <FrameLayout
-        android:layout_gravity="center"
-        android:id="@+id/note_descr_view"
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="?android:attr/detailsElementBackground"/>
-
-</LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--выводим основной фрагмент-->
+    <include layout="@layout/content_main" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
