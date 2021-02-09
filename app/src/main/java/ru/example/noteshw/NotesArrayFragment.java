@@ -93,14 +93,17 @@ public class NotesArrayFragment extends Fragment {
         String[] names = getResources().getStringArray(R.array.names);
         String[] descr = getResources().getStringArray(R.array.description);
         String[] dates = getResources().getStringArray(R.array.dates);
+
+        LayoutInflater inflater= getLayoutInflater();
+
         ArrayList<Note> notes = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
             Note tempNote = new Note(names[i], descr[i], dates[i]);
             notes.add(tempNote);
-            TextView tv = new TextView(getContext());
+            View item = inflater.inflate(R.layout.item, layoutView,false); //переделываем список через итемы
+            TextView tv = item.findViewById(R.id.item);
             tv.setText(notes.get(i).getName());
-            tv.setTextSize(30);
-            layoutView.addView(tv);
+            layoutView.addView(item);
             tv.setOnClickListener(v -> {
                 currentNote = tempNote;
                 showNote(currentNote);
